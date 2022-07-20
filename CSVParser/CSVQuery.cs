@@ -49,9 +49,7 @@ namespace CSVParser
 
         public List<string> RegexSearch(string column, string pattern)
         {
-            //string word = @"^\d{2}[^\d]";
             //returns index of matches, else return -1
-            string y = DataTable[column][0];
             List<int> matches = DataTable[column].Select((item, index) =>
                 Regex.IsMatch(item, pattern) ? index : -1).ToList();
 

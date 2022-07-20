@@ -69,8 +69,8 @@ namespace CSVParserTests
         public void RegexAddressShouldMatchExactlyOne()
         {
             //Arrange
-            string column = TableColumns.postal.ToString();
-            string word = "^[0-9]{2}";
+            string column = TableColumns.address.ToString();
+            string word = "^\\d{2}[^\\d]";
             string expected = "0 - Aleshia Tomkiewicz - Alan D Rosenburg Cpa Pc";
 
             //Act
@@ -85,7 +85,7 @@ namespace CSVParserTests
         {
             //Arrange
             string column = TableColumns.postal.ToString();
-            string word = "^[^\\d]{1,2}\\d{1}(\\y|[^\\d])";
+            string word = "^[^\\d]{1,2}\\d{1}(y|[^\\d])";
             string expected = "0 - Aleshia Tomkiewicz - Alan D Rosenburg Cpa Pc";
 
             //Act
