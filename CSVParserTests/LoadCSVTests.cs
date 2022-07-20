@@ -12,7 +12,7 @@ namespace CSVParserTests
         }
 
         [Test]
-        public void ShouldReturnAList()
+        public void ShouldReturnAListOf5()
         {
             //Arrange
             string filePath = "C:\\Users\\iavaq\\source\\repos\\MockTestConsole\\CSVParser\\data\\subInput.txt";
@@ -22,7 +22,8 @@ namespace CSVParserTests
 
             //Assert
             records.Should().NotBeEmpty()
-                .And.HaveCount(4);
+                .And.HaveCount(5);
+                 //should also check for datatype of list
         }
 
     }

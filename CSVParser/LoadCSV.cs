@@ -10,6 +10,7 @@ namespace CSVParser
     {
         public static List<string> LoadFromFile(string filePath)
         {
+            //returns a list of string from a csv file
             List<string> records = new();
             using (var reader = new StreamReader(filePath))
                 while (!reader.EndOfStream)
