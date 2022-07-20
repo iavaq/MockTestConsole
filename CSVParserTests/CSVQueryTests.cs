@@ -85,7 +85,7 @@ namespace CSVParserTests
         {
             //Arrange
             string column = TableColumns.postal.ToString();
-            string word = @"^[^\d]{1,2}\d{1}(\y|[^\d])";
+            string word = "^[^\\d]{1,2}\\d{1}(\\y|[^\\d])";
             string expected = "0 - Aleshia Tomkiewicz - Alan D Rosenburg Cpa Pc";
 
             //Act

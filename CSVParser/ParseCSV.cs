@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace CSVParser
 {
@@ -17,13 +18,15 @@ namespace CSVParser
             List<string> fields = new();
             List<List<string>> listOfFields = new();
             char[] delimeters = { ',' };
+            string pattern = ",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)";
 
             foreach (string row in input)
             {
                 //split row into list of "fields"
-                //SHOULD GET RID OF TRAILING SPACES
-                //SHOULD CHECK LENGTH OF FIELDS IS ALWAYS 11
-                fields = row.Split(delimeters).ToList();
+                // fields = row.Split(delimeters).ToList();
+
+                //regex to escape comma in between ""
+                fields = Regex.Split(row, pattern).ToList();
                 listOfFields.Add(fields);
             }
 
@@ -51,7 +54,7 @@ namespace CSVParser
                 int rowIndex = 0;
                 foreach (var row in input)
                 {
-                    values.Add(input[rowIndex][colIndex]);
+                    values.Add(input[rowIndex][colIndex].Trim());
                     rowIndex++;
                 }
                 columns[col] = values;
