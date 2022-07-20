@@ -44,7 +44,6 @@ namespace CSVParser
             }
 
             return GetOutput(matches);
-
         }
 
         public List<string> RegexSearch(string column, string pattern)
@@ -75,11 +74,14 @@ namespace CSVParser
 
         public List<string> CompareColumns(string colA, string colB)
         {
+            //returns records of those with numerically larger phone1 than phone2
+           
             List<double> phone1s = new();
             List<double> phone2s = new();
 
-            string test = DataTable[colA][3];
 
+            //go through each phone numbers, replace - with empty string
+            //create new list of phones as doubles
             for (int i = 0; i < DataTable[colA].Count; i++)
             {
                 double phone1 = double.Parse(DataTable[colA][i].Replace("-", ""));
@@ -89,6 +91,7 @@ namespace CSVParser
                 phone2s.Add(phone2);
             }
 
+            //returns index of matches, else return -1
             List<int> matches = phone1s.Select((item, index) =>
                 item > phone2s[index] ? index : -1).ToList();
 
@@ -105,7 +108,6 @@ namespace CSVParser
             foreach (int i in indices)
             {
                 //find row i from RecordList
-                //RecordList has a header
                 //get first_name, last_name, company
 
                 if (i > -1) //greater than 0 means a match

@@ -36,7 +36,7 @@ namespace CSVParserTests
         }
 
         [Test]
-        public void ShouldHaveAList()
+        public void ShouldMatchExpectedList()
         {
             //Arrange
             string column = TableColumns.company_name.ToString();
@@ -51,7 +51,7 @@ namespace CSVParserTests
         }
 
         [Test]
-        public void SearchExactShouldMatchExactlyOne()
+        public void SearchExactShouldHave1Match()
         {
             //Arrange
             string column = TableColumns.county.ToString();
@@ -63,10 +63,11 @@ namespace CSVParserTests
 
             //Assert
             actual[0].Should().Be(expected);
+            actual.Should().ContainSingle();
         }
 
         [Test]
-        public void RegexAddressShouldMatchExactlyOne()
+        public void RegexAddressShouldHave1Match()
         {
             //Arrange
             string column = TableColumns.address.ToString();
@@ -78,6 +79,7 @@ namespace CSVParserTests
 
             //Assert
             actual[0].Should().Be(expected);
+            actual.Should().ContainSingle();
         }
 
         [Test]
@@ -96,7 +98,7 @@ namespace CSVParserTests
         }
        
         [Test]
-        public void LimitByLengthSearchShouldNotBeNull()
+        public void LimitByLengthSearchShouldHave1Match()
         {
             //Arrange
             string column = TableColumns.web.ToString();
@@ -108,6 +110,7 @@ namespace CSVParserTests
 
             //Assert
             actual[0].Should().Be(expected);
+            actual.Should().ContainSingle();
         }
 
         [Test]

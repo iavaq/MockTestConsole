@@ -36,9 +36,8 @@ namespace CSVParser
         public static Dictionary<string, List<string>> ColumnBuilder(List<List<string>> input)
         {
             //takes a list of list
-            //returns dictionary with column headers as keys with value from csv column
+            //returns dictionary with column headers as keys and with values from csv records
     
-
             List<string> header = input.First();
 
             input.RemoveAt(0);
